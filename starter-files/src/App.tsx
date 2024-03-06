@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
-const App = () => {
-  const [term,setTerm]=useState('');
-  const onInputChange=()=>{
-    console.log();
+const App = (): JSX.Element => {
+  const [term, setTerm] = useState<string>('');
+  const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setTerm(e.target.value);
+    fetch(`http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit=${limit}&appid=${API key}`);
   }
-  // http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
   return (
     <main className="flex justify-center items-center bg-darkestPurple h-[100vh] w-full">
       <section className="w-full md:max-w-[500px] p-4 flex flex-col text-center items-center justify-center md:px-10 lg:p-24 h-full lg:h-[500px] bg-white bg-opacity-20 backdrop-blur-ls rounded drop-shadow-lg text-zinc-700">
